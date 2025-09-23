@@ -1,27 +1,33 @@
 // frontend/src/App.jsx
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import styles from './App.module.css'; // Importa os novos estilos
+import { AuthProvider } from './context/AuthContext.jsx';
+import styles from './App.module.css';
 
 // Importa os componentes de página e Navbar
-import Navbar from './components/Navbar';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import CreatePollPage from './pages/CreatePollPage';
-import PollPage from './pages/PollPage';
-import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/Navbar.jsx';
+import HomePage from './pages/HomePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import RegisterPage from './pages/RegisterPage.jsx';
+import CreatePollPage from './pages/CreatePollPage.jsx';
+import PollPage from './pages/PollPage.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
-  // Sem lógica de busca aqui. Mais simples e limpo.
+  // O estado da busca é controlado aqui, no componente pai
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
     <AuthProvider>
       <div>
-        <Navbar />
+        {/* Passamos o estado e a função para a Navbar poder atualizá-lo */}
+        <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        
         <main className={styles.mainContainer}>
           <Routes>
-            {/* As páginas não recebem mais a prop 'searchTerm' */}
-            <Route path="/" element={<HomePage />} />
+            {/* Passamos o termo da busca para a HomePage poder filtrar os resultados */}
+            <Route path="/" element={<HomePage searchTerm={searchTerm} />} />
+            
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/poll/:id" element={<PollPage />} />
