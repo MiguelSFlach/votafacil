@@ -1,0 +1,6 @@
+/* frontend/src/App.module.css */
+.mainContainer {
+  max-width: 1280px; /* Largura máxima do conteúdo */
+  margin: 0 auto;    /* Centraliza */
+  padding: 1rem;     /* Espaçamento interno */
+}

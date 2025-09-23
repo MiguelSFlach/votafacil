@@ -1,8 +1,9 @@
 // frontend/src/App.jsx
-import { useState } from 'react'; // Importar useState
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import styles from './App.module.css'; // Importa os novos estilos
 
+// Importa os componentes de página e Navbar
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -12,18 +13,15 @@ import PollPage from './pages/PollPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  // O estado da busca agora vive aqui, no componente principal
-  const [searchTerm, setSearchTerm] = useState('');
-
+  // Sem lógica de busca aqui. Mais simples e limpo.
   return (
     <AuthProvider>
       <div>
-        {/* Passamos o estado e a função para a Navbar */}
-        <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <main className="container mx-auto p-4 max-w-7xl"> {/* Aumentei um pouco o max-w */}
+        <Navbar />
+        <main className={styles.mainContainer}>
           <Routes>
-            {/* Passamos o termo de busca para a HomePage */}
-            <Route path="/" element={<HomePage searchTerm={searchTerm} />} />
+            {/* As páginas não recebem mais a prop 'searchTerm' */}
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/poll/:id" element={<PollPage />} />

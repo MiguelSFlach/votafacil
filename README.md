@@ -4,11 +4,20 @@ Projeto full-stack de um sistema de criação e votação em enquetes, com atual
 
 ## ✨ Features
 
--   [ ] Cadastro e Login de usuários com autenticação via JWT.
--   [ ] Criação de enquetes com múltiplas opções.
--   [ ] Votação única por usuário em cada enquete.
--   [ ] Visualização de resultados em tempo real com Socket.io.
--   [ ] Interface reativa construída com React e Vite.
+-   [x] Cadastro e Login de usuários com autenticação via JWT.
+-   [x] Criação e exclusão de enquetes (pelo criador ou admin).
+-   [x] Sistema de cargo de "Admin" com permissões elevadas.
+-   [x] Votação única por usuário em cada enquete.
+-   [x] Visualização de resultados em tempo real com Socket.io.
+-   [x] Interface reativa construída com React e estilizada com CSS Modules.
+
+## 👨‍💻 Equipe
+
+-   Felipe Eduardo Bohnen
+-   Emanuel Previatti
+-   Miguel Schneiders Flach
+-   Roney Bieger Anshau
+
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -47,5 +56,3 @@ Projeto full-stack de um sistema de criação e votação em enquetes, com atual
 1.  Abra um **novo terminal** e navegue até a pasta do frontend: `cd frontend`
 2.  Instale as dependências: `npm install`
 3.  Inicie a aplicação: `npm run dev`
-
-A aplicação estará disponível em `http://localhost:5173` (ou a porta indicada no terminal).
