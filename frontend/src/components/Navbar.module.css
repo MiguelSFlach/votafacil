@@ -1,0 +1,49 @@
+/* frontend/src/components/Navbar.module.css */
+.header {
+  background-color: #2E8555; /* Um tom de verde "correto" */
+  color: white;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.userActions a, .userActions button {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.registerButton {
+  background-color: #349A67;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.registerButton:hover {
+  background-color: #3AB77A;
+}

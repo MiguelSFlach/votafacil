@@ -1,0 +1,109 @@
+/* frontend/src/pages/HomePage.module.css */
+
+.pageContainer {
+  padding-top: 2rem;
+  display: grid;
+  /* Em telas menores, uma coluna. Em telas maiores (laptops), 4 colunas */
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Media query para telas a partir de 1024px de largura */
+@media (min-width: 1024px) {
+  .pageContainer {
+    grid-template-columns: repeat(4, 1fr); /* Cria 4 colunas de tamanho igual */
+  }
+}
+
+.createPollCard {
+  /* Ocupa 1 coluna */
+  grid-column: span 1;
+  position: sticky; /* Fica fixo ao rolar a página */
+  top: 6rem; /* Distância do topo */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 12rem;
+  border: 2px dashed #a0aec0; /* Borda pontilhada cinza */
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  color: #4a5568; /* Texto cinza escuro */
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.createPollCard:hover {
+  border-color: #2E8555; /* Borda fica verde no hover */
+  color: #2E8555;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.plusIcon {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 200;
+}
+
+.pollsContainer {
+  /* Ocupa as 3 colunas restantes em telas grandes */
+  grid-column: span 1;
+}
+
+@media (min-width: 1024px) {
+  .pollsContainer {
+    grid-column: span 3;
+  }
+}
+
+.pollsTitle {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.pollList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pollItem {
+  display: block;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+.pollItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.pollItemTitle {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #2d3748;
+}
+
+.pollItemVotes {
+  font-size: 0.875rem;
+  color: #718096; /* Cinza médio */
+  margin-top: 0.5rem;
+}
+
+.noPollsMessage {
+  background-color: white;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}

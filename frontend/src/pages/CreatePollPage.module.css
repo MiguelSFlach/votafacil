@@ -1,0 +1,110 @@
+/* frontend/src/pages/CreatePollPage.module.css */
+
+.formContainer {
+  max-width: 640px; /* Define uma largura máxima para o formulário */
+  margin: 2rem auto; /* Centraliza o formulário na página */
+}
+
+.formCard {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.formTitle {
+  font-size: 1.875rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2E8555; /* Título verde, como o tema */
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formLabel {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e0; /* Borda cinza */
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #2E8555; /* Borda fica verde ao focar */
+  box-shadow: 0 0 0 3px rgba(46, 133, 85, 0.2); /* Sombra suave verde */
+}
+
+.optionRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.removeOptionButton {
+  background: none;
+  border: none;
+  color: #e53e3e; /* Vermelho para o botão de remover */
+  font-size: 1.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.removeOptionButton:hover {
+  color: #c53030;
+  background-color: #fed7d7;
+}
+
+.addOptionButton {
+  background: none;
+  border: none;
+  color: #2E8555; /* Verde */
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.addOptionButton:hover {
+  text-decoration: underline;
+}
+
+.submitButton {
+  width: 100%;
+  background-color: #2E8555;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #256a44;
+}
+
+.errorMessage {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
