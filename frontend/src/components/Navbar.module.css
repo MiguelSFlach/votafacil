@@ -20,10 +20,11 @@
   font-weight: bold;
   color: white;
   text-decoration: none;
+  transition: color 0.2s ease-in-out; /* Adiciona transição suave */
 }
 
 .brand:hover {
-  color: #ccfbf1;
+  color: #ccfbf1; /* Cor de hover para a marca */
 }
 
 .userActions {
@@ -40,26 +41,30 @@
   border: none;
   cursor: pointer;
   font-size: 1rem;
-  font-family: inherit; /* Garante que o botão use a mesma fonte */
+  font-family: inherit;
+  transition: color 0.2s ease-in-out; /* Adicionada transição suave para todos */
+}
+
+/* Aplica o efeito de hover ao link de Login e ao botão de Sair */
+.userActions a:hover, .userActions button:hover {
+  color: #ccfbf1; /* Mesma cor de hover da marca para consistência */
 }
 
 .registerButton {
   background-color: #349A67;
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .registerButton:hover {
   background-color: #3AB77A;
+  color: white; /* Garante que o texto continue branco */
 }
 
-/* ... (todos os estilos existentes da Navbar) ... */
-
-/* ADICIONE ESTES NOVOS ESTILOS NO FINAL */
-
+/* Estilos para a barra de pesquisa */
 .searchContainer {
-  flex-grow: 1; /* Faz a busca ocupar o espaço disponível no centro */
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   padding: 0 1rem;
@@ -73,8 +78,8 @@
 
 .searchInput {
   width: 100%;
-  padding: 0.5rem 1rem 0.5rem 2.5rem; /* Espaço para o ícone */
-  border-radius: 9999px; /* Totalmente arredondado */
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 9999px;
   border: none;
   background-color: rgba(0, 0, 0, 0.15);
   color: white;
