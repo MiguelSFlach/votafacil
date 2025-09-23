@@ -20,7 +20,7 @@ export default function PollPage() {
       .catch(err => setError('Enquete não encontrada.'));
 
     // A lógica do Socket.io permanece a mesma
-    const socket = io('http://localhost:5000');
+    const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
     socket.emit('joinPoll', id);
     socket.on('voteUpdate', (updatedPoll) => {
       setPoll(updatedPoll);

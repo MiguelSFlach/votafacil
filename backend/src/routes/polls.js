@@ -82,4 +82,34 @@ router.post('/:id/vote', auth, async (req, res) => {
   }
 });
 
+// DELETAR UMA ENQUETE
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const pollId = req.params.id;
+    const userId = req.user.id;
+    const userRole = req.user.role; // Pega o role do token
+
+    const poll = await Poll.findById(pollId);
+
+    if (!poll) {
+      return res.status(404).json({ message: 'Enquete não encontrada.' });
+    }
+
+    // VERIFICAÇÃO DE AUTORIZAÇÃO ATUALIZADA
+    // Permite a exclusão se o usuário for admin OU se for o criador da enquete
+    if (userRole !== 'admin' && poll.creator.toString() !== userId) {
+      return res.status(403).json({ message: 'Acesso negado. Você não tem permissão para excluir esta enquete.' });
+    }
+
+    // Deleta a enquete e os votos (lógica existente está correta)
+    await Poll.findByIdAndDelete(pollId);
+    await Vote.deleteMany({ poll: pollId });
+
+    res.json({ message: 'Enquete excluída com sucesso.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erro ao excluir a enquete.' });
+  }
+});
+
 module.exports = router;

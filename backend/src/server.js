@@ -18,9 +18,12 @@ const app = express();
 const server = http.createServer(app);
 
 // Configuração do Socket.io permitindo qualquer origem
+// CÓDIGO NOVO E CORRIGIDO
+const VERCEL_FRONTEND_URL = "https://votafacil-o7g7.vercel.app"; // <-- COLOQUE A URL DO SEU SITE AQUI
+
 const io = new Server(server, {
   cors: {
-    origin: "*", // Em produção, é bom restringir para o domínio do seu frontend
+    origin: [VERCEL_FRONTEND_URL, "http://localhost:5173"], // Permite ambos
     methods: ["GET", "POST"]
   }
 });

@@ -2,6 +2,7 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode'; // 1. IMPORTAR a biblioteca para decodificar
 
 const AuthContext = createContext();
 
@@ -10,19 +11,50 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem('token'));
   const navigate = useNavigate();
 
+  // ESTE BLOCO FOI ATUALIZADO
   useEffect(() => {
-    if (token) {
-      localStorage.setItem('token', token);
-    } else {
-      localStorage.removeItem('token');
+    // Esta função roda sempre que a página carrega
+    const storedToken = localStorage.getItem('token');
+
+    if (storedToken) {
+      try {
+        // 2. Decodifica o token para pegar os dados do usuário e a data de expiração
+        const decodedUser = jwtDecode(storedToken);
+
+        // Verifica se o token expirou (a data de expiração 'exp' está em segundos)
+        const isExpired = decodedUser.exp * 1000 < Date.now();
+
+        if (!isExpired) {
+          // Se o token é válido, define o token e o usuário no estado da aplicação
+          setToken(storedToken);
+          setUser({
+            id: decodedUser.id,
+            name: decodedUser.name,
+            role: decodedUser.role
+          });
+        } else {
+          // Se o token expirou, limpa tudo
+          setUser(null);
+          setToken(null);
+          localStorage.removeItem('token');
+        }
+      } catch (error) {
+        // Se o token for inválido por qualquer motivo, limpa tudo
+        console.error("Token inválido:", error);
+        setUser(null);
+        setToken(null);
+        localStorage.removeItem('token');
+      }
     }
-  }, [token]);
+  }, []); // O array vazio [] faz isso rodar apenas uma vez, quando o app carrega
+
 
   const login = async (email, password) => {
     try {
       const response = await api.post('/auth/login', { email, password });
       const { token, user } = response.data;
       
+      localStorage.setItem('token', token); // Salva o token no storage
       setToken(token);
       setUser(user);
 
@@ -33,14 +65,11 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // --- NOVA FUNÇÃO DE REGISTRO ---
   const register = async (name, email, password) => {
     try {
-      // Não espera um token de volta, apenas uma mensagem de sucesso.
       await api.post('/auth/register', { name, email, password });
     } catch (error) {
       console.error("Falha no registro", error);
-      // Relança o erro para o formulário poder exibi-lo.
       throw error;
     }
   };
@@ -48,10 +77,10 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     setToken(null);
+    localStorage.removeItem('token'); // Limpa o token do storage
     navigate('/login');
   };
 
-  // Adicionar 'register' ao valor do contexto
   const authValue = { user, token, login, logout, register };
 
   return (

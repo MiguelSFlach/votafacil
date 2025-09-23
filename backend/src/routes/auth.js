@@ -52,13 +52,13 @@ router.post('/login', async (req, res) => {
     }
 
     // Cria o token com o ID do usuário
-    const token = jwt.sign(
-      { id: user._id, name: user.name },
+     const token = jwt.sign(
+      { id: user._id, name: user.name, role: user.role }, // <-- ADICIONE user.role AQUI
       process.env.JWT_SECRET,
-      { expiresIn: '8h' } // Aumentei a expiração para 8 horas
+      { expiresIn: '8h' }
     );
 
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    res.json({ token, user: { id: user._id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Erro no login.' });

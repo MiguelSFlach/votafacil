@@ -20,6 +20,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  role: { // <-- ADICIONE ESTE BLOCO
+    type: String,
+    enum: ['user', 'admin'], // Só permite esses dois valores
+    default: 'user'         // O padrão para novos usuários
+  },
   createdAt: {
     type: Date,
     default: Date.now
