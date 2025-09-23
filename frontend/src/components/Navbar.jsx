@@ -1,6 +1,6 @@
 // frontend/src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext.jsx';
 import styles from './Navbar.module.css';
 
 export default function Navbar({ searchTerm, setSearchTerm }) {
@@ -33,17 +33,21 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
           </div>
         </div>
 
-        {/* Lado Direito */}
+        {/* Lado Direito: Ações do Utilizador */}
         <div style={{ flex: 1, minWidth: 'fit-content' }} className={styles.userActions}>
           {user ? (
             <>
-              <span>Olá, {user.name}!</span>
-              <button onClick={logout}>Sair</button>
+              <span style={{color: 'white'}}>Olá, {user.name}!</span>
+              <button onClick={logout} className={styles.logoutButton}>
+                Sair
+              </button>
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/register" className={styles.registerButton}>
+              <Link to="/login" className={styles.greenButton}>
+                Login
+              </Link>
+              <Link to="/register" className={styles.greenButton}>
                 Registrar
               </Link>
             </>

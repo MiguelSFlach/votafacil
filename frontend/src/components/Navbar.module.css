@@ -33,34 +33,40 @@
   gap: 0.75rem; /* Diminuí um pouco o espaçamento */
 }
 
-/* --- ESTILOS DE BOTÃO ATUALIZADOS --- */
+/* --- ESTILOS DE BOTÃO CORRIGIDOS E SIMPLIFICADOS --- */
 
-/* Estilo base para todos os botões de ação */
-.actionButton {
+/* Estilo para os botões verdes (Login, Registrar) */
+.greenButton {
+  background-color: #3AB77A; /* Verde vibrante */
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  color: white !important; /* Força a cor do texto a ser branca */
+  color: white;
   font-weight: 600;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.875rem; /* Ajustei o tamanho da fonte */
+  font-size: 0.875rem;
   font-family: inherit;
   transition: background-color 0.2s ease-in-out;
-}
-
-/* Modificador para botões verdes (Login, Registrar) */
-.greenButton {
-  background-color: #3AB77A; /* Verde vibrante */
 }
 
 .greenButton:hover {
   background-color: #349A67; /* Verde mais escuro */
 }
 
-/* Modificador para o botão de sair (Logout) */
+/* Estilo para o botão de sair (Logout) */
 .logoutButton {
   background-color: #e53e3e; /* Vermelho */
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-family: inherit;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .logoutButton:hover {
