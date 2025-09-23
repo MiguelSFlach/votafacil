@@ -1,16 +1,40 @@
-const mongoose = require('mongoose');
+// backend/src/models/Poll.js
 
-const OptionSchema = new mongoose.Schema({
-  text: String,
-  votes: { type: Number, default: 0 }
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Um sub-schema para as opções da enquete
+const optionSchema = new Schema({
+  text: {
+    type: String,
+    required: true
+  },
+  votes: {
+    type: Number,
+    default: 0
+  }
 });
 
-const PollSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  options: [OptionSchema],
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  expiresAt: Date,
-  isClosed: { type: Boolean, default: false }
-}, { timestamps: true });
+// O schema principal da enquete
+const pollSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  options: [optionSchema],
 
-module.exports = mongoose.model('Poll', PollSchema);
+  // --- A LINHA QUE FALTAVA ---
+  // Diz ao banco de dados que cada enquete precisa ter um criador,
+  // e que esse criador é um ID que se refere a um documento na coleção 'User'.
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Poll', pollSchema);
