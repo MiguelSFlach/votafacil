@@ -20,47 +20,53 @@
   font-weight: bold;
   color: white;
   text-decoration: none;
-  transition: color 0.2s ease-in-out; /* Adiciona transição suave */
+  transition: color 0.2s ease-in-out;
 }
 
 .brand:hover {
-  color: #ccfbf1; /* Cor de hover para a marca */
+  color: #ccfbf1;
 }
 
 .userActions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.75rem; /* Diminuí um pouco o espaçamento */
 }
 
-.userActions a, .userActions button {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: color 0.2s ease-in-out; /* Adicionada transição suave para todos */
-}
+/* --- ESTILOS DE BOTÃO ATUALIZADOS --- */
 
-/* Aplica o efeito de hover ao link de Login e ao botão de Sair */
-.userActions a:hover, .userActions button:hover {
-  color: #ccfbf1; /* Mesma cor de hover da marca para consistência */
-}
-
-.registerButton {
-  background-color: #349A67;
+/* Estilo base para todos os botões de ação */
+.actionButton {
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  color: white !important; /* Força a cor do texto a ser branca */
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.875rem; /* Ajustei o tamanho da fonte */
+  font-family: inherit;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.registerButton:hover {
-  background-color: #3AB77A;
-  color: white; /* Garante que o texto continue branco */
+/* Modificador para botões verdes (Login, Registrar) */
+.greenButton {
+  background-color: #3AB77A; /* Verde vibrante */
 }
+
+.greenButton:hover {
+  background-color: #349A67; /* Verde mais escuro */
+}
+
+/* Modificador para o botão de sair (Logout) */
+.logoutButton {
+  background-color: #e53e3e; /* Vermelho */
+}
+
+.logoutButton:hover {
+  background-color: #c53030; /* Vermelho mais escuro */
+}
+
 
 /* Estilos para a barra de pesquisa */
 .searchContainer {
@@ -105,3 +111,4 @@
   height: 1.25rem;
   color: rgba(255, 255, 255, 0.6);
 }
+
