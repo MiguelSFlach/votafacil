@@ -1,6 +1,8 @@
 # 💻 VotaFácil - Sistema de Votação em Tempo Real
 
-Projeto full-stack de um sistema de criação e votação em enquetes, com atualização dos resultados em tempo real. Desenvolvido como trabalho para a disciplina de [Nome da Disciplina] da [Nome da Faculdade].
+Projeto full-stack de um sistema de criação e votação em enquetes, com atualização dos resultados em tempo real. Desenvolvido como trabalho para a disciplina de **[Nome da Disciplina]** da **[Nome da Faculdade]**.
+
+**Professor:** Roberson Junior Fernandes Alves
 
 ## ✨ Features
 
@@ -10,14 +12,19 @@ Projeto full-stack de um sistema de criação e votação em enquetes, com atual
 -   [x] Votação única por usuário em cada enquete.
 -   [x] Visualização de resultados em tempo real com Socket.io.
 -   [x] Interface reativa construída com React e estilizada com CSS Modules.
+-   [x] Barra de pesquisa para filtrar enquetes.
 
 ## 👨‍💻 Equipe
 
 -   Felipe Eduardo Bohnen
 -   Emanuel Previatti
 -   Miguel Schneiders Flach
--   Roney Bieger Anshau
+-   Roney Bieger Anschau
 
+## 📺 Vídeo de Apresentação
+
+Assista ao vídeo de apresentação do projeto no YouTube:
+[https://www.youtube.com/watch?v=AzmfsB_7hQE](https://www.youtube.com/watch?v=AzmfsB_7hQE)
 
 ## 🚀 Tecnologias Utilizadas
 
